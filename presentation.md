@@ -1,0 +1,56 @@
+Developing Data Products - Shiny App Presentation
+========================================================
+author: Filip Novotny
+date: January 26, 2018
+autosize: true
+
+Introduction
+========================================================
+This assignment has two parts. Firstly, we need to create a Shiny application and deploy it on Rstudio's servers. Secondly, we should use e.g. Rstudio Presenter to prepare a reproducible pitch presentation about the application. This presentation addresses the second part of the course project.
+
+The app developed for the first part of the assignment is available at: https://novopino.shinyapps.io/developing-data-products-4week/
+
+Source code for ui.R and server.R files are available on the GitHub: https://github.com/Novopino/Developing-data-products
+
+Calculate the squared value of a given number
+========================================================
+This app helps to calculate the squared value of a given number
+
+The app allows the user to provide input of any number. Then its squared value appears below.
+
+The Code to Run the App
+========================================================
+
+```r
+library(shiny)
+
+# Define UI
+ui = (fluidPage(
+  
+  # Numeric input
+  numericInput("num", label = h3("Insert a number and you get its squared value"), value = 2),
+  
+  hr(),
+  fluidRow(column(3, verbatimTextOutput("value")))
+  
+))
+
+# Define server logic
+server = (function(input, output) {
+  
+    output$value <- renderPrint({
+    (input$num)^2 })  
+})
+
+# Return a Shiny app object
+shinyApp(ui = ui, server = server)
+```
+URLs
+========================================================
+The app developed for the first part of the assignment is available at:
+
+https://novopino.shinyapps.io/developing-data-products-4week/
+
+Source code for ui.R and server.R files are available on the GitHub:
+
+https://github.com/Novopino/Developing-data-products
